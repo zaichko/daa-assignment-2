@@ -12,9 +12,19 @@ public class MyLinkedList {
     private Node head;
     private int size;
 
+    public long accessCount = 0;
+    public long comparisonCount = 0;
+    public long movementCount = 0;
+
     public MyLinkedList(){
         this.head = null;
         this.size = 0;
+    }
+
+    public void resetCounters(){
+        accessCount = 0;
+        comparisonCount = 0;
+        movementCount = 0;
     }
 
     public void add(int x){
@@ -25,12 +35,15 @@ public class MyLinkedList {
         }
 
         Node current = head;
+        accessCount++;
 
         while (current.next != null){
             current = current.next;
+            accessCount++;
         }
 
         current.next = new Node(x);
+        movementCount++;
         size++;
     }
 
@@ -43,6 +56,7 @@ public class MyLinkedList {
             Node newNode = new Node(x);
             newNode.next = head;
             this.head = newNode;
+            movementCount++;
             size++;
             return;
         }
@@ -51,11 +65,13 @@ public class MyLinkedList {
 
         for (int i = 0; i < index - 1; i++){
             current = current.next;
+            accessCount++;
         }
 
         Node newNode = new Node(x);
         newNode.next = current.next;
         current.next = newNode;
+        movementCount++;
         size++;
     }
 
@@ -68,6 +84,7 @@ public class MyLinkedList {
             Node removed = head;
 
             head = head.next;
+            movementCount++;
             size--;
 
             return removed.data;
@@ -77,6 +94,7 @@ public class MyLinkedList {
         Node removed = previous.next;
 
         previous.next = previous.next.next;
+        movementCount++;
 
         size--;
 
@@ -95,9 +113,11 @@ public class MyLinkedList {
         }
 
         Node current = head;
+        accessCount++;
 
         for (int i = 0; i < index; i++){
             current = current.next;
+            accessCount++;
         }
 
         return current;
@@ -108,6 +128,7 @@ public class MyLinkedList {
         Node current = head;
 
         while (current != null){
+            comparisonCount++;
             if (current.data == x){
                 return true;
             }

@@ -3,6 +3,9 @@ public class MinHeap {
     int size;
     int capacity;
 
+    public long comparisonCount = 0;
+    public long movementCount = 0; // swaps
+
     public MinHeap(){
         this.data = new int[10];
         this.size = 0;
@@ -17,6 +20,11 @@ public class MinHeap {
         this.data = new int[initial];
         this.size = 0;
         this.capacity = initial;
+    }
+
+    public void resetCounters() {
+        comparisonCount = 0;
+        movementCount = 0;
     }
 
     public int getSize(){
@@ -47,6 +55,7 @@ public class MinHeap {
         while (index > 0){
             int parent = (index - 1) / 2;
 
+            comparisonCount++;
             if (data[index] < data[parent]){
                 swap(index, parent);
                 index = parent;
@@ -60,6 +69,7 @@ public class MinHeap {
         int temp = data[a];
         data[a] = data[b];
         data[b] = temp;
+        movementCount++;
     }
 
     public int peekMin(){
@@ -93,11 +103,13 @@ public class MinHeap {
             int smallest = index;
 
             if (left < size){
+                comparisonCount++;
                 if (data[left] < data[smallest]){
                     smallest = left;
                 }
             }
             if (right < size){
+                comparisonCount++;
                 if (data[right] < data[smallest]){
                     smallest = right;
                 }
