@@ -1,0 +1,9 @@
+n,structure,avg_time_ms,comparison_count,theoretical
+100,DynamicArray,0,4033,95050,O(n)
+100,LinkedList,0,3693,95050,O(n)
+1000,DynamicArray,0,7858,500500,O(n)
+1000,LinkedList,1,6868,500500,O(n)
+10000,DynamicArray,0,1856,500500,O(n)
+10000,LinkedList,1,2644,500500,O(n)
+100000,DynamicArray,0,1973,500500,O(n)
+100000,LinkedList,1,3029,500500,O(n)

@@ -1,0 +1,9 @@
+n,phase,avg_time_ms,comparison_count,theoretical
+100,insert,0,0248,203,O(log n)
+100,extractMin,0,0713,845,O(log n)
+1000,insert,0,0877,2209,O(log n)
+1000,extractMin,0,1943,15014,O(log n)
+10000,insert,0,9312,22687,O(log n)
+10000,extractMin,1,4065,216596,O(log n)
+100000,insert,2,0279,228500,O(log n)
+100000,extractMin,15,0977,2831644,O(log n)
