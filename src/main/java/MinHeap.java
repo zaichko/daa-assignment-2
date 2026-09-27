@@ -31,6 +31,10 @@ public class MinHeap {
         return this.size;
     }
 
+    public boolean isEmpty(){
+        return size == 0;
+    }
+
     public void insert(int x){
         ensureCapacity();
         data[size] = x;
@@ -123,5 +127,16 @@ public class MinHeap {
             index = smallest;
         }
     }
+
+    public boolean isValidHeap() {
+        for (int i = 0; i < size; i++) {
+            int left = 2 * i + 1;
+            int right = 2 * i + 2;
+            if (left < size && data[left] < data[i]) return false;
+            if (right < size && data[right] < data[i]) return false;
+        }
+        return true;
+    }
+
 
 }
